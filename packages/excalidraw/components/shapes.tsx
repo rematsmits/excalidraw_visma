@@ -6,6 +6,7 @@ import {
   DiamondIcon,
   EllipseIcon,
   ArrowIcon,
+  DoubleEndedArrowIcon,
   LineIcon,
   FreedrawIcon,
   TextIcon,
@@ -47,6 +48,13 @@ export const SHAPES = [
   {
     icon: ArrowIcon,
     value: "arrow",
+    key: KEYS.A,
+    numericKey: KEYS["5"],
+    fillable: true,
+  },
+  {
+    icon: DoubleEndedArrowIcon,
+    value: "double_headed_arrow",
     key: KEYS.A,
     numericKey: KEYS["5"],
     fillable: true,

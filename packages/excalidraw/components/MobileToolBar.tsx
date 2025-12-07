@@ -22,6 +22,7 @@ import {
   EraserIcon,
   RectangleIcon,
   ArrowIcon,
+  DoubleEndedArrowIcon,
   extraToolsIcon,
   DiamondIcon,
   EllipseIcon,
@@ -80,7 +81,7 @@ const LINEAR_ELEMENT_TOOLS = [
   },
   {
     type: "double_headed_arrow",
-    icon: ArrowIcon,
+    icon: DoubleEndedArrowIcon,
     title: capitalizeString(t("toolBar.doubleHeadedArrow")),
   },
   { type: "line", icon: LineIcon, title: capitalizeString(t("toolBar.line")) },
