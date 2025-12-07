@@ -145,6 +145,7 @@ export type ToolType =
   | "diamond"
   | "ellipse"
   | "arrow"
+  | "double_headed_arrow"
   | "line"
   | "freedraw"
   | "text"

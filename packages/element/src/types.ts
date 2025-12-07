@@ -346,6 +346,15 @@ export type ExcalidrawArrowElement = ExcalidrawLinearElement &
     initDoubleHeaded: boolean;
   }>;
 
+/**
+ * Artificial type used only for toolbar purposes to create arrows with initDoubleHeaded=true.
+ * This type represents a double-headed arrow element.
+ */
+export type ExcalidrawDoubleArrowElement = ExcalidrawArrowElement &
+  Readonly<{
+    initDoubleHeaded: true;
+  }>;
+
 export type ExcalidrawElbowArrowElement = Merge<
   ExcalidrawArrowElement,
   {

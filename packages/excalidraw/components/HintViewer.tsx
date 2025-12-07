@@ -76,14 +76,14 @@ const getHints = ({
     });
   }
 
-  if (activeTool.type === "arrow" || activeTool.type === "line") {
+  if (activeTool.type === "arrow" || activeTool.type === "double_headed_arrow" || activeTool.type === "line") {
     if (multiMode) {
       return t("hints.linearElementMulti", {
         shortcut_1: getTaggedShortcutKey("Escape"),
         shortcut_2: getTaggedShortcutKey("Enter"),
       });
     }
-    if (activeTool.type === "arrow") {
+    if (activeTool.type === "arrow" || activeTool.type === "double_headed_arrow") {
       return t("hints.arrowTool", {
         shortcut: getTaggedShortcutKey("A"),
       });

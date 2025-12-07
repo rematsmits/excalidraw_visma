@@ -7279,11 +7279,12 @@ class App extends React.Component<AppProps, AppState> {
       this.handleTextOnPointerDown(event, pointerDownState);
     } else if (
       this.state.activeTool.type === "arrow" ||
+      this.state.activeTool.type === "double_headed_arrow" ||
       this.state.activeTool.type === "line"
     ) {
       this.handleLinearElementOnPointerDown(
         event,
-        this.state.activeTool.type,
+        this.state.activeTool.type === "double_headed_arrow" ? "arrow" : this.state.activeTool.type,
         pointerDownState,
       );
     } else if (this.state.activeTool.type === "freedraw") {
@@ -8532,17 +8533,14 @@ class App extends React.Component<AppProps, AppState> {
       values from appState. */
 
       const { currentItemStartArrowhead, currentItemEndArrowhead } = this.state;
+      const isDoubleHeadedArrow = this.state.activeTool.type === "double_headed_arrow";
 
       const [startArrowhead, endArrowhead] =
-        // elementType === "arrow"
-          // ? isDoubleHeadedArrow
-          //   ? [currentItemStartArrowhead || "arrow", currentItemEndArrowhead || "arrow"]
-          //   : [currentItemStartArrowhead, currentItemEndArrowhead]
-          // : [null, null];
         elementType === "arrow"
-          ? [currentItemStartArrowhead || "arrow", currentItemEndArrowhead || "arrow"]
-          : [currentItemStartArrowhead, currentItemEndArrowhead]
-
+          ? isDoubleHeadedArrow
+            ? [currentItemStartArrowhead || "arrow", currentItemEndArrowhead || "arrow"]
+            : [currentItemStartArrowhead, currentItemEndArrowhead]
+          : [null, null];
 
       const element =
         elementType === "arrow"
@@ -8572,7 +8570,7 @@ class App extends React.Component<AppProps, AppState> {
                 this.state.currentItemArrowType === ARROW_TYPE.elbow
                   ? []
                   : null,
-              // initDoubleHeaded: isDoubleHeadedArrow,
+              initDoubleHeaded: isDoubleHeadedArrow,
             })
           : newLinearElement({
               type: elementType,

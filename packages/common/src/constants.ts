@@ -443,6 +443,7 @@ export const TOOL_TYPE = {
   diamond: "diamond",
   ellipse: "ellipse",
   arrow: "arrow",
+  double_headed_arrow: "double_headed_arrow",
   line: "line",
   freedraw: "freedraw",
   text: "text",

@@ -78,6 +78,11 @@ const LINEAR_ELEMENT_TOOLS = [
     icon: ArrowIcon,
     title: capitalizeString(t("toolBar.arrow")),
   },
+  {
+    type: "double_headed_arrow",
+    icon: ArrowIcon,
+    title: capitalizeString(t("toolBar.doubleHeadedArrow")),
+  },
   { type: "line", icon: LineIcon, title: capitalizeString(t("toolBar.line")) },
 ] as const;
 
@@ -98,7 +103,7 @@ export const MobileToolBar = ({
     "rectangle" | "diamond" | "ellipse"
   >("rectangle");
   const [lastActiveLinearElement, setLastActiveLinearElement] = useState<
-    "arrow" | "line"
+    "arrow" | "double_headed_arrow" | "line"
   >("arrow");
 
   // keep lastActiveGenericShape in sync with active tool if user switches via other UI
@@ -114,7 +119,7 @@ export const MobileToolBar = ({
 
   // keep lastActiveLinearElement in sync with active tool if user switches via other UI
   useEffect(() => {
-    if (activeTool.type === "arrow" || activeTool.type === "line") {
+    if (activeTool.type === "arrow" || activeTool.type === "double_headed_arrow" || activeTool.type === "line") {
       setLastActiveLinearElement(activeTool.type);
     }
   }, [activeTool.type]);
@@ -307,15 +312,17 @@ export const MobileToolBar = ({
           t(
             lastActiveLinearElement === "arrow"
               ? "toolBar.arrow"
+              : lastActiveLinearElement === "double_headed_arrow"
+              ? "toolBar.doubleHeadedArrow"
               : "toolBar.line",
           ),
         )}
         data-testid="toolbar-arrow"
         fillable={true}
         onToolChange={(type: string) => {
-          if (type === "arrow" || type === "line") {
-            setLastActiveLinearElement(type);
-            app.setActiveTool({ type });
+          if (type === "arrow" || type === "double_headed_arrow" || type === "line") {
+            setLastActiveLinearElement(type as "arrow" | "double_headed_arrow" | "line");
+            app.setActiveTool({ type: type as ToolType });
           }
         }}
         displayedOption={
