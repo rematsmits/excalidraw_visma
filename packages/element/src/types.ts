@@ -343,6 +343,7 @@ export type ExcalidrawArrowElement = ExcalidrawLinearElement &
   Readonly<{
     type: "arrow";
     elbowed: boolean;
+    initDoubleHeaded: boolean;
   }>;
 
 export type ExcalidrawElbowArrowElement = Merge<

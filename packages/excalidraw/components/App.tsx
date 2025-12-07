@@ -8532,10 +8532,17 @@ class App extends React.Component<AppProps, AppState> {
       values from appState. */
 
       const { currentItemStartArrowhead, currentItemEndArrowhead } = this.state;
+
       const [startArrowhead, endArrowhead] =
+        // elementType === "arrow"
+          // ? isDoubleHeadedArrow
+          //   ? [currentItemStartArrowhead || "arrow", currentItemEndArrowhead || "arrow"]
+          //   : [currentItemStartArrowhead, currentItemEndArrowhead]
+          // : [null, null];
         elementType === "arrow"
-          ? [currentItemStartArrowhead, currentItemEndArrowhead]
-          : [null, null];
+          ? [currentItemStartArrowhead || "arrow", currentItemEndArrowhead || "arrow"]
+          : [currentItemStartArrowhead, currentItemEndArrowhead]
+
 
       const element =
         elementType === "arrow"
@@ -8565,6 +8572,7 @@ class App extends React.Component<AppProps, AppState> {
                 this.state.currentItemArrowType === ARROW_TYPE.elbow
                   ? []
                   : null,
+              // initDoubleHeaded: isDoubleHeadedArrow,
             })
           : newLinearElement({
               type: elementType,

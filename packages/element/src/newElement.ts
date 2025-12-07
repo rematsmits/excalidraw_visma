@@ -492,22 +492,32 @@ export const newArrowElement = <T extends boolean>(
     points?: ExcalidrawArrowElement["points"];
     elbowed?: T;
     fixedSegments?: ExcalidrawElbowArrowElement["fixedSegments"] | null;
+    initDoubleHeaded?: boolean;
   } & ElementConstructorOpts,
 ): T extends true
   ? NonDeleted<ExcalidrawElbowArrowElement>
   : NonDeleted<ExcalidrawArrowElement> => {
+    
+  const initDoubleHeaded = opts.initDoubleHeaded ?? opts.initDoubleHeaded ?? false;
+  
+  const startArrowhead = initDoubleHeaded
+    ? (opts.startArrowhead || "arrow")
+    : (opts.startArrowhead !== undefined ? opts.startArrowhead : null);
+  const endArrowhead = opts.endArrowhead !== undefined ? opts.endArrowhead : "arrow";
+
   if (opts.elbowed) {
     return {
       ..._newElementBase<ExcalidrawElbowArrowElement>(opts.type, opts),
       points: opts.points || [],
       startBinding: null,
       endBinding: null,
-      startArrowhead: opts.startArrowhead || null,
-      endArrowhead: opts.endArrowhead || null,
+      startArrowhead,
+      endArrowhead,
       elbowed: true,
       fixedSegments: opts.fixedSegments || [],
       startIsSpecial: false,
       endIsSpecial: false,
+      initDoubleHeaded,
     } as NonDeleted<ExcalidrawElbowArrowElement>;
   }
 
@@ -516,9 +526,10 @@ export const newArrowElement = <T extends boolean>(
     points: opts.points || [],
     startBinding: null,
     endBinding: null,
-    startArrowhead: opts.startArrowhead || null,
-    endArrowhead: opts.endArrowhead || null,
+    startArrowhead,
+    endArrowhead,
     elbowed: false,
+    initDoubleHeaded,
   } as T extends true
     ? NonDeleted<ExcalidrawElbowArrowElement>
     : NonDeleted<ExcalidrawArrowElement>;

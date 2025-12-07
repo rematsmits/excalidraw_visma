@@ -54,6 +54,7 @@
     "arrowtype_sharp": "Sharp arrow",
     "arrowtype_round": "Curved arrow",
     "arrowtype_elbowed": "Elbow arrow",
+    "initDoubleEnded": "Initialize double-ended",
     "fontSize": "Font size",
     "fontFamily": "Font family",
     "addWatermark": "Add \"Made with Excalidraw\"",
