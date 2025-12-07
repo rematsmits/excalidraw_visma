@@ -300,6 +300,7 @@
     "ellipse": "Ellipse",
     "arrow": "Arrow",
     "doubleHeadedArrow": "Double-headed arrow",
+    "double_headed_arrow": "Double-headed arrow",
     "line": "Line",
     "freedraw": "Draw",
     "text": "Text",
