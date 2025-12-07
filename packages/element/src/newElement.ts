@@ -517,7 +517,6 @@ export const newArrowElement = <T extends boolean>(
       fixedSegments: opts.fixedSegments || [],
       startIsSpecial: false,
       endIsSpecial: false,
-      initDoubleHeaded,
     } as NonDeleted<ExcalidrawElbowArrowElement>;
   }
 
@@ -529,7 +528,6 @@ export const newArrowElement = <T extends boolean>(
     startArrowhead,
     endArrowhead,
     elbowed: false,
-    initDoubleHeaded,
   } as T extends true
     ? NonDeleted<ExcalidrawElbowArrowElement>
     : NonDeleted<ExcalidrawArrowElement>;
